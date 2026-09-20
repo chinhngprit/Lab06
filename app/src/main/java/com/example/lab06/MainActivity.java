@@ -15,9 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    Button btnLoad;
-    List countryList = new ArrayList();
+    private RecyclerView recyclerArticles;
+    private ArticleAdapter adapter;
+    private ArrayList<Article> articleList;
+
+    private void initMockData() {
+        articleList = new ArrayList<>();
+        articleList.add(new Article("Exploring Hidden Gems in Hanoi", "A detailed guide to the less-traveled streets and local culinary spots...", R.drawable.ic_image_placeholder, 1));
+        articleList.add(new Article("Saigon Nightlife", "Discover the vibrant coffee culture and street food of Ho Chi Minh City.", R.drawable.ic_image_placeholder, 2));
+        articleList.add(new Article("Hoi An Lantern Festival", "Experience the magical atmosphere of the ancient town glowing with lanterns.", R.drawable.ic_image_placeholder, 0));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +37,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        countryList.add("Vietnam");
-        countryList.add("US");
-        countryList.add("China");
-        countryList.add("Japan");
-        countryList.add("Korea");
-        countryList.add("Thailand");
+        // ham tao du lieu mau
+        initMockData();
 
-        recyclerView = findViewById(R.id.recyclerView);
-        btnLoad = findViewById(R.id.btnLoad);
-        btnLoad.setOnClickListener(v -> {
-            MyAdapter myAdapter = new MyAdapter(v.getContext(), countryList);
-            recyclerView.setLayoutManager(
-                    new LinearLayoutManager(this)
-            );
-            recyclerView.setAdapter(myAdapter);
-        });
+        // anh xa the recyclerView tu activity_main.xml
+        recyclerArticles = findViewById(R.id.recycler_articles);
+
+        // khai bao layout manager de hien thi cuon doc tu tren xuong
+        recyclerArticles.setLayoutManager(new LinearLayoutManager(this));
+
+        // khoi tao adapter voi mang du lieu va gan vao recylerView
+        adapter = new ArticleAdapter(articleList);
+        recyclerArticles.setAdapter(adapter);
     }
 }
