@@ -3,10 +3,12 @@ package com.example.lab06;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -55,6 +57,18 @@ public class MainActivity extends AppCompatActivity {
         // 2. khoi tao launcher
         detailLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(), result -> {
+                    // ktra du lieu tra ve có dan tem RESULT_OK vaf co chua inten khong
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Intent data = result.getData();
+                        Article updateArticle = (Article) data.getSerializableExtra("UPDATED_ARTICLE");
+                        int position = data.getIntExtra("EXTRA_POSITION", -1);
+
+                        if (updateArticle != null && position != -1) {
+                            articleList.set(position, updateArticle);
+                            // lenhj cap nhan giao dien
+                            adapter.notifyItemChanged(position);
+                        }
+                    }
 
                 }
         );
@@ -73,5 +87,30 @@ public class MainActivity extends AppCompatActivity {
             detailLauncher.launch(intent);
         });
         recyclerArticles.setAdapter(adapter);
+    }
+    // ham bom file menu len thanh action bar
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Danh sách bài viết");
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else if (item.getItemId() == R.id.menu_add) {
+            // xu ly khi bam nut them bai
+            android.widget.Toast.makeText(this, "Add post opening...", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
