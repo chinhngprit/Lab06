@@ -29,9 +29,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMockData() {
         articleList = new ArrayList<>();
-        articleList.add(new Article("Exploring Hidden Gems in Hanoi", "A detailed guide to the less-traveled streets and local culinary spots...", R.drawable.ic_image_placeholder, 1));
-        articleList.add(new Article("Saigon Nightlife", "Discover the vibrant coffee culture and street food of Ho Chi Minh City.", R.drawable.ic_image_placeholder, 2));
-        articleList.add(new Article("Hoi An Lantern Festival", "Experience the magical atmosphere of the ancient town glowing with lanterns.", R.drawable.ic_image_placeholder, 0));
+        articleList.add(new Article("Exploring Hidden Gems in Hanoi", "Vietnam’s two largest cities are polar opposites—Ho Chi Minh City is a sleek, modern city of skyscrapers while the charming capital of Hanoi is filled with ancient history. Hanoi is the best for watching motorbikes defy gravity with their loads ranging from refrigerators to a family of five with a dog. It’s home to the country’s largest airport and the gateway to Ha Long and Lan Ha Bay and Ninh Binh. \n" +
+                "\n" +
+                "These recommendations are based on my experience living and working for travel companies in Southeast Asia for the past decade. (I visit Vietnam at least once a year for work.)\n" +
+                "\n" +
+                "Here are the best things to do in Hanoi along with the best time to visit and where to stay!\n" +
+                "\n" +
+                "You can easily do all these things on your own, but if you’re short on time consider a city tour.", R.drawable.image1, 1));
+        articleList.add(new Article("Saigon Nightlife", "If you ask travelers what they remember most about Ho Chi Minh City, many will mention the food, the scooters, or the incredible energy that fills every street. But ask those who have spent an evening exploring beyond their hotel, and you’ll often hear the same answer: Saigon truly comes alive after sunset.\n" +
+                "\n" +
+                "So, is Saigon beautiful at night?\n" +
+                "\n" +
+                "Absolutely—but not because of grand monuments or dazzling light shows alone. Saigon’s beauty comes from its unique atmosphere. Modern skyscrapers glow above historic French buildings, tiny alleyways buzz with families enjoying dinner, rooftop bars overlook the sparkling Saigon River, and the aroma of sizzling street food drifts through neighborhoods that rarely appear in guidebooks.\n" +
+                "\n" +
+                "Unlike cities where nightlife revolves around clubs or entertainment districts, Ho Chi Minh City offers something far more authentic. It’s a place where you can sip Vietnamese coffee at 10 PM, enjoy freshly grilled seafood on a tiny plastic stool, watch locals exercising in parks, and discover hidden corners that feel untouched by mass tourism.\n" +
+                "\n" +
+                "Whether you’re visiting for a weekend or planning a longer Vietnam itinerary, exploring Saigon after dark is one of the most rewarding experiences you can have. Here’s why the city looks even more captivating once the sun goes down.\n" +
+                "\n" +
+                "If you’re looking for curated Ho Chi Minh City tours, exploring with a knowledgeable local guide can help you experience the city’s hidden side beyond the typical attractions.\n" +
+                "\n", R.drawable.saigon, 2));
+        articleList.add(new Article("Hoi An Lantern Festival", "Hoi An is a picturesque city located in central Vietnam. Once a bustling trading port, today Hoi An is a charming destination that attracts visitors from all over the world with its well-preserved architecture, stunning natural scenery, and vibrant culture.\n" +
+                "\n" +
+                "The city’s Old Town, a UNESCO World Heritage Site, is a fascinating mix of Japanese, Chinese, and Vietnamese influences, with beautiful temples, merchant houses, and canals winding through the narrow streets. Visitors can explore the local markets, sample delicious Vietnamese cuisine, and shop for traditional handicrafts.\n" +
+                "\n" +
+                "Beyond the city limits, there are plenty of opportunities for adventure and relaxation, from beautiful beaches to lush countryside and historic sites. Hoi An truly has something for everyone, making it a must-visit destination in Vietnam.\n" +
+                "\n" +
+                "In this article, we’ll take a closer look at Hoi An, exploring its history, culture, attractions, and more. Whether you’re planning a trip to Hoi An or simply curious about this beautiful city, read on to discover all that it has to offer.", R.drawable.hoian, 0));
     }
 
     @Override
