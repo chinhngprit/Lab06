@@ -1,9 +1,12 @@
 package com.example.lab06;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerArticles;
     private ArticleAdapter adapter;
     private ArrayList<Article> articleList;
+
+    // khai bao launcher bo phong intent cho ket qua tra ve
+    private ActivityResultLauncher<Intent> detailLauncher;
 
     private void initMockData() {
         articleList = new ArrayList<>();
@@ -46,8 +52,26 @@ public class MainActivity extends AppCompatActivity {
         // khai bao layout manager de hien thi cuon doc tu tren xuong
         recyclerArticles.setLayoutManager(new LinearLayoutManager(this));
 
-        // khoi tao adapter voi mang du lieu va gan vao recylerView
-        adapter = new ArticleAdapter(articleList);
+        // 2. khoi tao launcher
+        detailLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(), result -> {
+
+                }
+        );
+
+
+
+        // 3. khoi tao adapter voi mang du lieu va gan vao recylerView
+        adapter = new ArticleAdapter(articleList, (article, positon) -> {
+            // 1. tao inten de dieu huong tu mainactivity sang detailactivity
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+            //2. dong goi article va vi tri vao intent
+            intent.putExtra("EXTRA_ARTICLE", article);
+            intent.putExtra("EXTRA_POSITION", positon);
+            // dung launcher de phong
+            detailLauncher.launch(intent);
+        });
         recyclerArticles.setAdapter(adapter);
     }
 }
