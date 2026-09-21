@@ -62,7 +62,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
         holder.tvTitle.setText(article.getTitle());
         holder.tvContent.setText(article.getContent());
-        holder.tvViews.setText("Views: " + article.getView());
+        holder.tvViews.setText("Views: " + article.getViews());
         holder.imgCover.setImageResource(article.getImgCover());
 
         // 4. bat su kien click trn khung itemview

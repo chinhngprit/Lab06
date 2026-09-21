@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Article implements Serializable {
     private String title;
     private String content;
-    private int imgCover; // lu id anh trong res/drawable
-    private int view;
+    private int imgCover;
+    private int views;
 
-    public Article(String title, String content, int imgCover, int view) {
+    public Article(String title, String content, int imgCover, int views) {
         this.title = title;
         this.content = content;
         this.imgCover = imgCover;
-        this.view = view;
+        this.views = views;
     }
 
     public String getTitle() {
@@ -39,11 +39,11 @@ public class Article implements Serializable {
         this.imgCover = imgCover;
     }
 
-    public int getView() {
-        return view;
+    public int getViews() {
+        return views;
     }
 
-    public void setView(int view) {
-        this.view = view;
+    public void setViews(int views) {
+        this.views = views;
     }
 }
